@@ -1,12 +1,296 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
+
 <head>
-<title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testseite</title>
 </head>
+
+
 <body>
+    <h2>Bitcoin vs. Alts Februar 2022 - Januar 2023</h2>
+    <h4>Live Übersicht über alle Coins ~ by sam00</h4>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    <table style="width: 50%;" border="1">
+      <tbody>
+      <tr>
+      <td><b>Investierte Bitcoin</b></td>
+      <td><b>Bitcoin Gegenwert in USD</b></td>
+      <td><b>Altcoin Portfolio in BTC</b></td>
+      <td><b>Altcoin Portfolio in USD</b></td>
+      </tr>
+      <tr>
+      <td id = "investbtc">&nbsp;</td>
+      <td id = "bitcoinusd">&nbsp;</td>
+      <td id = "altcoinbtc">&nbsp;</td>
+      <td id = "altcoinusd">&nbsp;</td>
+      </tr>
+      </tbody>
+      </table>
 
+    <p></p>
+
+    <table style="width: 50%;" border="1">
+        <tbody>
+        <tr>
+        <td><b>User</b></td>
+        <td><b>Coin</b></td>
+        <td><b>Anzahl</b></td>
+        <td><b>Preis in USD</b></td>
+        <td><b>Gesamtwert in USD</b></td>
+        <td><b>Gains in %</b></td>
+        </tr>
+        <tr>
+        <td id = "u1">Buchi-88</td>
+        <td id = "c1">Waves</td>
+        <td id = "a1">&nbsp;</td>
+        <td id = "p1">&nbsp;</td>
+        <td id = "g1">&nbsp;</td>
+        <td id = "ga1">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u2">mole0815</td>
+        <td id = "c2">Cardano</td>
+        <td id = "a2">&nbsp;</td>
+        <td id = "p2">&nbsp;</td>
+        <td id = "g2">&nbsp;</td>
+        <td id = "ga2">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u3">Ted_Zz</td>
+        <td id = "c3">IoTeX</td>
+        <td id = "a3">&nbsp;</td>
+        <td id = "p3">&nbsp;</td>
+        <td id = "g3">&nbsp;</td>
+        <td id = "ga3">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u4">sam00</td>
+        <td id = "c4">Algorand</td>
+        <td id = "a4">&nbsp;</td>
+        <td id = "p4">&nbsp;</td>
+        <td id = "g4">&nbsp;</td>
+        <td id = "ga4">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u5">1miau</td>
+        <td id = "c5">Trader Joe</td>
+        <td id = "a5">&nbsp;</td>
+        <td id = "p5">&nbsp;</td>
+        <td id = "g5">&nbsp;</td>
+        <td id = "ga5">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u7">ewibit</td>
+        <td id = "c7">BNB</td>
+        <td id = "a7">&nbsp;</td>
+        <td id = "p7">&nbsp;</td>
+        <td id = "g7">&nbsp;</td>
+        <td id = "ga7">&nbsp;</td>
+        </tr>
+        <tr>
+        <td id = "u8">coco23</td>
+        <td id = "c8">Kadena</td>
+        <td id = "a8">&nbsp;</td>
+        <td id = "p8">&nbsp;</td>
+        <td id = "g8">&nbsp;</td>
+        <td id = "ga8">&nbsp;</td>
+        </tr>
+		<tr>
+        <td id = "u10">nullCoiner</td>
+        <td id = "c10">AVAX</td>
+        <td id = "a10">&nbsp;</td>
+        <td id = "p10">&nbsp;</td>
+        <td id = "g10">&nbsp;</td>
+        <td id = "ga10">&nbsp;</td>
+        </tr>
+        </tbody>
+        </table>
+
+
+        <script>
+
+          async function getBitcoinPrice() {
+            let btcPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/bitcoin?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return btcPrice
+          }
+
+          async function getWavesPrice() {
+            let wavesPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/waves?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return wavesPrice
+          }
+
+          async function getCardanoPrice() {
+            let cardanoPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/cardano?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return cardanoPrice
+          }
+		  
+          async function getIotexPrice() {
+            let iotexPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/iotex?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return iotexPrice
+          }
+		  
+          async function getAlgoPrice() {
+            let algoPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/algorand?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return algoPrice
+          }
+		  
+          async function getJoePrice() {
+            let joePrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/joe?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return joePrice
+          }
+
+          async function getBnbPrice() {
+            let bnbPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/binancecoin?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return bnbPrice
+          }
+
+		  
+          async function getKadenaPrice() {
+            let kadenaPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/kadena?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return kadenaPrice
+          }
+		  
+          async function getAvaxPrice() {
+            let avaxPrice = (await fetch(
+              `https://api.coingecko.com/api/v3/coins/avalanche-2?localization=false&tickers=false&market_data`
+              ).then(r => r.json())).market_data.current_price.usd;
+            return avaxPrice
+          } 
+		  
+		  
+          
+
+          //Startwerte eintragen
+          var investbtc = 0.03044653;
+          var anzahlWaves = 1; //vorläufig
+          var anzahlCardano = 1;  //vorläufig
+          var anzahlIotex = 1; //vorläufig
+          var anzahlAlgo = 1;  //vorläufig
+          var anzahlJoe = 1; //vorläufig
+		  var anzahlBnb = 1; //vorläufig
+          var anzahlKadena = 1;  //vorläufig
+          var anzahlAvax = 1; //vorläufig
+          usdProCoin = 100; //vorläufig
+
+          async function main() {
+            //Alle Preise holen
+            const btcPrice = await getBitcoinPrice()
+            const wavesPrice = await getWavesPrice()
+            const cardanoPrice = await getCardanoPrice()
+			const iotexPrice = await getIotexPrice()
+            const algoPrice = await getAlgoPrice()
+            const joePrice = await getJoePrice()
+			const bnbPrice = await getBnbPrice()
+            const kadenaPrice = await getKadenaPrice()
+			const avaxPrice = await getAvaxPrice()
+			
+
+            //Gains Altcoins ausrechnen
+
+			var bitcoinusd = investbtc * btcPrice;
+			
+            var wavesGesamtwert = Math.round(wavesPrice * anzahlWaves,2);
+			var wavesGains = Math.round((((wavesGesamtwert)/usdProCoin)-1)*100);
+			
+            var cardanoGesamtwert = Math.round(cardanoPrice * anzahlCardano,2);
+			var cardanoGains = Math.round((((cardanoGesamtwert)/usdProCoin)-1)*100);
+			
+			var iotexGesamtwert = Math.round(iotexPrice * anzahlIotex,2);
+			var iotexGains = Math.round((((iotexGesamtwert)/usdProCoin)-1)*100);
+			
+			var algoGesamtwert = Math.round(algoPrice * anzahlAlgo,2);
+			var algoGains = Math.round((((algoGesamtwert)/usdProCoin)-1)*100);
+			
+			var joeGesamtwert = Math.round(joePrice * anzahlJoe,2);
+			var joeGains = Math.round((((joeGesamtwert)/usdProCoin)-1)*100);
+			
+			var avaxGesamtwert = Math.round(avaxPrice * anzahlAvax,2);
+			var avaxGains = Math.round((((avaxGesamtwert)/usdProCoin)-1)*100);
+			
+			var kadenaGesamtwert = Math.round(kadenaPrice * anzahlKadena,2);
+			var kadenaGains = Math.round((((kadenaGesamtwert)/usdProCoin)-1)*100);
+			
+			var bnbGesamtwert = Math.round(bnbPrice * anzahlBnb,2);
+			var bnbGains = Math.round((((bnbGesamtwert)/usdProCoin)-1)*100);
+			
+			
+			//Gesamtwerte Altcoins ausrechnen
+			
+			var altsInBtc = Math.round((wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + kadenaGesamtwert + bnbGesamtwert)/btcPrice*100000000)/100000000;
+			var altsInUsd = Math.round(wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + kadenaGesamtwert + bnbGesamtwert);
+
+            //Tabelle einfügen
+            document.getElementById("investbtc").innerHTML = investbtc;
+            document.getElementById("bitcoinusd").innerHTML = Math.round(bitcoinusd);
+			document.getElementById("altcoinbtc").innerHTML = altsInBtc;
+			document.getElementById("altcoinusd").innerHTML = altsInUsd;
+			
+            document.getElementById("a1").innerHTML = anzahlWaves;
+            document.getElementById("p1").innerHTML = wavesPrice;
+            document.getElementById("g1").innerHTML = wavesGesamtwert;
+            document.getElementById("ga1").innerHTML = wavesGains;
+			
+			document.getElementById("a2").innerHTML = anzahlCardano;
+            document.getElementById("p2").innerHTML = cardanoPrice;
+            document.getElementById("g2").innerHTML = cardanoGesamtwert;
+            document.getElementById("ga2").innerHTML = cardanoGains;
+			
+			document.getElementById("a3").innerHTML = anzahlIotex;
+            document.getElementById("p3").innerHTML = iotexPrice;
+            document.getElementById("g3").innerHTML = iotexGesamtwert;
+            document.getElementById("ga3").innerHTML = iotexGains;
+			
+			document.getElementById("a4").innerHTML = anzahlAlgo;
+            document.getElementById("p4").innerHTML = algoPrice;
+            document.getElementById("g4").innerHTML = algoGesamtwert;
+            document.getElementById("ga4").innerHTML = algoGains;
+			
+			document.getElementById("a5").innerHTML = anzahlJoe;
+            document.getElementById("p5").innerHTML = joePrice;
+            document.getElementById("g5").innerHTML = joeGesamtwert;
+            document.getElementById("ga5").innerHTML = joeGains;
+			
+			document.getElementById("a7").innerHTML = anzahlBnb;
+            document.getElementById("p7").innerHTML = bnbPrice;
+            document.getElementById("g7").innerHTML = bnbGesamtwert;
+            document.getElementById("ga7").innerHTML = bnbGains;
+			
+			document.getElementById("a8").innerHTML = anzahlKadena;
+            document.getElementById("p8").innerHTML = kadenaPrice;
+            document.getElementById("g8").innerHTML = kadenaGesamtwert;
+            document.getElementById("ga8").innerHTML = kadenaGains;
+			
+			document.getElementById("a10").innerHTML = anzahlAvax;
+            document.getElementById("p10").innerHTML = avaxPrice;
+            document.getElementById("g10").innerHTML = avaxGesamtwert;
+            document.getElementById("ga10").innerHTML = avaxGains;
+          }
+
+
+          main();
+          setInterval(main,3000)
+
+        </script>
 </body>
+
+
 </html>
