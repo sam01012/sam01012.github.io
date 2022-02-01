@@ -235,8 +235,8 @@
 			
 			//Gesamtwerte Altcoins ausrechnen
 			
-			var altsInBtc = Math.round((wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + kadenaGesamtwert + bnbGesamtwert)/btcPrice*100000000)/100000000;
-			var altsInUsd = Math.round(wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + kadenaGesamtwert + bnbGesamtwert);
+			var altsInBtc = Math.round((wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + tezosGesamtwert + bnbGesamtwert)/btcPrice*100000000)/100000000;
+			var altsInUsd = Math.round(wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + tezosGesamtwert + bnbGesamtwert);
 
             //Tabelle einfügen
             document.getElementById("investbtc").innerHTML = investbtc;
