@@ -17,15 +17,22 @@
       <tbody>
       <tr>
       <td><b>Investierte Bitcoin</b></td>
+      <td><b>Investierte Bitcoin pro Coin</b></td>
       <td><b>Bitcoin Gegenwert in USD</b></td>
       <td><b>Altcoin Portfolio in BTC</b></td>
+      <td><b>Gewinn in BTC</b></td>
       <td><b>Altcoin Portfolio in USD</b></td>
+      <td><b>Gewinn in USD</b></td>
+      
       </tr>
       <tr>
       <td id = "investbtc">&nbsp;</td>
+      <td id = "investbtcpc">&nbsp;</td>
       <td id = "bitcoinusd">&nbsp;</td>
       <td id = "altcoinbtc">&nbsp;</td>
+      <td id = "bitcoingewinn">&nbsp;</td>
       <td id = "altcoinusd">&nbsp;</td>
+      <td id = "usdgewinn">&nbsp;</td>
       </tr>
       </tbody>
       </table>
@@ -38,14 +45,16 @@
         <td><b>User</b></td>
         <td><b>Coin</b></td>
         <td><b>Anzahl</b></td>
+        <td><b>BTC Wert aktuell</b></td>
         <td><b>Preis in USD</b></td>
         <td><b>Gesamtwert in USD</b></td>
-        <td><b>Gains in %</b></td>
+        <td><b>Gains in % (USD)</b></td>
         </tr>
         <tr>
         <td id = "u1">Buchi-88</td>
         <td id = "c1">Waves</td>
         <td id = "a1">&nbsp;</td>
+        <td id = "b1">&nbsp;</td>
         <td id = "p1">&nbsp;</td>
         <td id = "g1">&nbsp;</td>
         <td id = "ga1">&nbsp;</td>
@@ -54,6 +63,7 @@
         <td id = "u2">mole0815</td>
         <td id = "c2">Cardano</td>
         <td id = "a2">&nbsp;</td>
+        <td id = "b2">&nbsp;</td>
         <td id = "p2">&nbsp;</td>
         <td id = "g2">&nbsp;</td>
         <td id = "ga2">&nbsp;</td>
@@ -62,6 +72,7 @@
         <td id = "u3">Ted_Zz</td>
         <td id = "c3">IoTeX</td>
         <td id = "a3">&nbsp;</td>
+        <td id = "b3">&nbsp;</td>
         <td id = "p3">&nbsp;</td>
         <td id = "g3">&nbsp;</td>
         <td id = "ga3">&nbsp;</td>
@@ -70,6 +81,7 @@
         <td id = "u4">sam00</td>
         <td id = "c4">Algorand</td>
         <td id = "a4">&nbsp;</td>
+        <td id = "b4">&nbsp;</td>
         <td id = "p4">&nbsp;</td>
         <td id = "g4">&nbsp;</td>
         <td id = "ga4">&nbsp;</td>
@@ -78,6 +90,7 @@
         <td id = "u5">1miau</td>
         <td id = "c5">Trader Joe</td>
         <td id = "a5">&nbsp;</td>
+        <td id = "b5">&nbsp;</td>
         <td id = "p5">&nbsp;</td>
         <td id = "g5">&nbsp;</td>
         <td id = "ga5">&nbsp;</td>
@@ -86,6 +99,7 @@
         <td id = "u7">ewibit</td>
         <td id = "c7">BNB</td>
         <td id = "a7">&nbsp;</td>
+        <td id = "b7">&nbsp;</td>
         <td id = "p7">&nbsp;</td>
         <td id = "g7">&nbsp;</td>
         <td id = "ga7">&nbsp;</td>
@@ -94,6 +108,7 @@
         <td id = "u8">coco23</td>
         <td id = "c8">Tezos</td>
         <td id = "a8">&nbsp;</td>
+        <td id = "b8">&nbsp;</td>
         <td id = "p8">&nbsp;</td>
         <td id = "g8">&nbsp;</td>
         <td id = "ga8">&nbsp;</td>
@@ -102,6 +117,7 @@
         <td id = "u10">nullCoiner</td>
         <td id = "c10">AVAX</td>
         <td id = "a10">&nbsp;</td>
+        <td id = "b10">&nbsp;</td>
         <td id = "p10">&nbsp;</td>
         <td id = "g10">&nbsp;</td>
         <td id = "ga10">&nbsp;</td>
@@ -181,6 +197,7 @@
 
           //Startwerte eintragen
           var investbtc = 0.03044653;
+          var investbtcpc = 0.00380582
           var anzahlWaves = 16.11387; //vorläufig
           var anzahlCardano = 140.0598;  //vorläufig
           var anzahlIotex = 1980.018; //vorläufig
@@ -190,6 +207,7 @@
           var anzahlTezos = 41;  //vorläufig
           var anzahlAvax = 2.1; //vorläufig
           usdProCoin = 146.5; //vorläufig
+          usdGesamt = 1172
 
           async function main() {
             //Alle Preise holen
@@ -210,76 +228,98 @@
 			
             var wavesGesamtwert = Math.round(wavesPrice * anzahlWaves,2);
 			var wavesGains = Math.round((((wavesGesamtwert)/usdProCoin)-1)*100);
+      var wavesBTC = (wavesGesamtwert / btcPrice).toFixed(6)
 			
             var cardanoGesamtwert = Math.round(cardanoPrice * anzahlCardano,2);
 			var cardanoGains = Math.round((((cardanoGesamtwert)/usdProCoin)-1)*100);
+      var cardanoBTC = (cardanoGesamtwert / btcPrice).toFixed(6)
 			
 			var iotexGesamtwert = Math.round(iotexPrice * anzahlIotex,2);
 			var iotexGains = Math.round((((iotexGesamtwert)/usdProCoin)-1)*100);
+      var iotexBTC = (iotexGesamtwert / btcPrice).toFixed(6)
 			
 			var algoGesamtwert = Math.round(algoPrice * anzahlAlgo,2);
 			var algoGains = Math.round((((algoGesamtwert)/usdProCoin)-1)*100);
+      var algoBTC = (algoGesamtwert / btcPrice).toFixed(6)
 			
 			var joeGesamtwert = Math.round(joePrice * anzahlJoe,2);
 			var joeGains = Math.round((((joeGesamtwert)/usdProCoin)-1)*100);
+      var joeBTC = (joeGesamtwert / btcPrice).toFixed(6)
 			
 			var avaxGesamtwert = Math.round(avaxPrice * anzahlAvax,2);
 			var avaxGains = Math.round((((avaxGesamtwert)/usdProCoin)-1)*100);
+      var avaxBTC = (avaxGesamtwert / btcPrice).toFixed(6)
 			
 			var tezosGesamtwert = Math.round(tezosPrice * anzahlTezos,2);
 			var tezosGains = Math.round((((tezosGesamtwert)/usdProCoin)-1)*100);
+      var tezosBTC = (tezosGesamtwert / btcPrice).toFixed(6)
 			
 			var bnbGesamtwert = Math.round(bnbPrice * anzahlBnb,2);
 			var bnbGains = Math.round((((bnbGesamtwert)/usdProCoin)-1)*100);
+      var bnbBTC = (bnbGesamtwert / btcPrice).toFixed(6)
 			
 			
 			//Gesamtwerte Altcoins ausrechnen
 			
 			var altsInBtc = Math.round((wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + tezosGesamtwert + bnbGesamtwert)/btcPrice*100000000)/100000000;
 			var altsInUsd = Math.round(wavesGesamtwert + cardanoGesamtwert + iotexGesamtwert + algoGesamtwert + joeGesamtwert + avaxGesamtwert + tezosGesamtwert + bnbGesamtwert);
+      var bitcoingewinn = (altsInBtc - investbtc).toFixed(6)
+      var usdgewinn = altsInUsd - usdGesamt
 
             //Tabelle einfügen
             document.getElementById("investbtc").innerHTML = investbtc;
             document.getElementById("bitcoinusd").innerHTML = Math.round(bitcoinusd);
 			document.getElementById("altcoinbtc").innerHTML = altsInBtc;
 			document.getElementById("altcoinusd").innerHTML = altsInUsd;
-			
+			document.getElementById("investbtcpc").innerHTML = investbtcpc;
+      document.getElementById("bitcoingewinn").innerHTML = bitcoingewinn
+      document.getElementById("usdgewinn").innerHTML = usdgewinn
+
+
             document.getElementById("a1").innerHTML = anzahlWaves;
+            document.getElementById("b1").innerHTML = wavesBTC;
             document.getElementById("p1").innerHTML = wavesPrice;
             document.getElementById("g1").innerHTML = wavesGesamtwert;
             document.getElementById("ga1").innerHTML = wavesGains;
 			
 			document.getElementById("a2").innerHTML = anzahlCardano;
+      document.getElementById("b2").innerHTML = cardanoBTC;
             document.getElementById("p2").innerHTML = cardanoPrice;
             document.getElementById("g2").innerHTML = cardanoGesamtwert;
             document.getElementById("ga2").innerHTML = cardanoGains;
 			
 			document.getElementById("a3").innerHTML = anzahlIotex;
+      document.getElementById("b3").innerHTML = iotexBTC;
             document.getElementById("p3").innerHTML = iotexPrice;
             document.getElementById("g3").innerHTML = iotexGesamtwert;
             document.getElementById("ga3").innerHTML = iotexGains;
 			
 			document.getElementById("a4").innerHTML = anzahlAlgo;
+      document.getElementById("b4").innerHTML = algoBTC;
             document.getElementById("p4").innerHTML = algoPrice;
             document.getElementById("g4").innerHTML = algoGesamtwert;
             document.getElementById("ga4").innerHTML = algoGains;
 			
 			document.getElementById("a5").innerHTML = anzahlJoe;
+      document.getElementById("b5").innerHTML = joeBTC;
             document.getElementById("p5").innerHTML = joePrice;
             document.getElementById("g5").innerHTML = joeGesamtwert;
             document.getElementById("ga5").innerHTML = joeGains;
 			
 			document.getElementById("a7").innerHTML = anzahlBnb;
+      document.getElementById("b7").innerHTML = bnbBTC;
             document.getElementById("p7").innerHTML = bnbPrice;
             document.getElementById("g7").innerHTML = bnbGesamtwert;
             document.getElementById("ga7").innerHTML = bnbGains;
 			
 			document.getElementById("a8").innerHTML = anzahlTezos;
+      document.getElementById("b8").innerHTML = tezosBTC;
             document.getElementById("p8").innerHTML = tezosPrice;
             document.getElementById("g8").innerHTML = tezosGesamtwert;
             document.getElementById("ga8").innerHTML = tezosGains;
 			
 			document.getElementById("a10").innerHTML = anzahlAvax;
+      document.getElementById("b10").innerHTML = avaxBTC;
             document.getElementById("p10").innerHTML = avaxPrice;
             document.getElementById("g10").innerHTML = avaxGesamtwert;
             document.getElementById("ga10").innerHTML = avaxGains;
